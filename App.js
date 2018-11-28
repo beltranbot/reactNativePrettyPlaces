@@ -19,16 +19,29 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    placeName: ''
+    placeName: '',
+    places: []
   }
 
   placeNameChangedHandler = placeName => this.setState({ placeName })
 
-  onPressButtonHandler = () => {
-    
+  placeSubmitHandler = () => {
+    if (this.state.placeName.trim() === '') {
+      return
+    }
+    this.setState(prevState => {
+      return {
+        places: prevState.places.concat(prevState.placeName),
+        placeName: ''
+      }
+    })
   }
 
   render() {
+    const placesOutput = this.state.places.map((place, i) => (
+      <Text key={i}>{place}</Text>
+    ))
+
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -41,9 +54,12 @@ export default class App extends Component<Props> {
           <Button
             style={styles.placeButton}
             title="Add"
-            onPress={this.onPressButtonHandler}
+            onPress={this.placeSubmitHandler}
           />
 
+        </View>
+        <View>
+          {placesOutput}
         </View>
       </View>
     )
