@@ -13,26 +13,13 @@ export default class App extends Component {
   };
 
   placeAddedHandler = placeName => {
-    this.setState(prevState => {
-      return {
-        places: prevState.places.concat({
-          key: Math.random().toString(),
-          name: placeName,
-          image: {
-            uri: 'https://data.whicdn.com/images/104123841/superthumb.jpg'
-          },
-        })
-      };
-    });
+    
   };
 
   placeDeletedHandler = () => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter(place => {
-          return place.key !== prevState.selectedPlace.key
-        }),
-        selectedPlace: null
+        
       }
     })
   }
@@ -44,9 +31,7 @@ export default class App extends Component {
   placeSelectedHandler = (key) => {
     this.setState(prevState => {
       return {
-        selectedPlace: prevState.places.find(place => {
-          return place.key === key
-        })
+        
       }
     })
 
