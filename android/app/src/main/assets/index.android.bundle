@@ -83337,25 +83337,32 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         fileName: _jsxFileName,
         lineNumber: 37
       }
-    }, modalContent, _react.default.createElement(_reactNative.TouchableOpacity, {
+    }, modalContent, _react.default.createElement(_reactNative.View, {
+      style: styles.deleteButton,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 39
       }
-    }, _react.default.createElement(_Ionicons.default, {
-      size: 30,
-      name: "ios-person",
-      color: "red",
+    }, _react.default.createElement(_reactNative.TouchableOpacity, {
+      onPress: props.onItemDeleted,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 40
       }
-    })), _react.default.createElement(_reactNative.Button, {
+    }, _react.default.createElement(_Ionicons.default, {
+      size: 30,
+      name: "ios-trash",
+      color: "red",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43
+      }
+    }))), _react.default.createElement(_reactNative.Button, {
       title: "Close",
       onPress: props.onModalClosed,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 50
       }
     })));
   };
@@ -83372,6 +83379,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       fontWeight: 'bold',
       textAlign: 'center',
       fontSize: 28
+    },
+    deleteButton: {
+      alignItems: 'center'
     }
   });
 
