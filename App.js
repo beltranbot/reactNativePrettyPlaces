@@ -6,8 +6,8 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,23 +18,51 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    placeName: ''
+  }
+
+  placeNameChangedHandler = placeName => this.setState({ placeName })
+
+  onPressButtonHandler = () => {
+    
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.placeInput}
+            placeholder="An Awesome place"
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangedHandler}
+          />
+          <Button
+            style={styles.placeButton}
+            title="Add"
+            onPress={this.onPressButtonHandler}
+          />
 
-        />
+        </View>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    padding: 26,
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  inputContainer: {
+    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: "center"
   },
   welcome: {
     fontSize: 20,
@@ -46,4 +74,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  placeInput: {
+    width: "70%"
+  },
+  placeButton: {
+    width: "30%"
+  }
 });
