@@ -4,26 +4,26 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import ListItem from '../ListItem/ListItem';
 
 const placeList = props => {
-    // const placesOutput = props.places.map((place, i) => (
-    //     <ListItem key={i} placeName={place}
-    //       onItemPressed={() => props.onItemDeleted(i)}
-    //       />
-    //   ));
 
     return (
-        <FlatList
-          data={props.places}
-          renderItem={(info) => <ListItem placeName={info.item.value}
+      <FlatList
+        data={props.places}
+        renderItem={(info) => (
+          <ListItem
+            placeName={info.item.name}
+            placeImage={info.item.image}
             onItemPressed={() => props.onItemDeleted(info.item.key)}
-          />}
-          style={styles.listContainer} />
-    );
-};
+          />
+        )}
+        style={styles.listContainer}
+      />
+    )
+}
 
 const styles = StyleSheet.create({
     listContainer: {
       width: "100%"
     }
-});
+})
 
 export default placeList;
